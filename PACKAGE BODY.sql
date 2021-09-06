@@ -25,34 +25,34 @@ group by d.name_department;
 TYPE t_sum_depar_salary IS TABLE OF CUR%ROWTYPE;
 l_sum_depar_salary t_sum_depar_salary;
 BEGIN
-OPEN cur;
-FETCH cur BULK COLLECT INTO l_sum_depar_salary;
-CLOSE cur;
-FOR I IN l_sum_depar_salary.first .. l_sum_depar_salary.last
-LOOP
-    DBMS_OUTPUT.PUT_LINE (l_sum_depar_salary(i).dep || ' ' || l_sum_depar_salary(i).summ);
-END LOOP;
+    OPEN cur;
+    FETCH cur BULK COLLECT INTO l_sum_depar_salary;
+    CLOSE cur;
+    FOR I IN l_sum_depar_salary.first .. l_sum_depar_salary.last
+    LOOP
+        DBMS_OUTPUT.PUT_LINE (l_sum_depar_salary(i).dep || ' ' || l_sum_depar_salary(i).summ);
+    END LOOP;
 END;
 FUNCTION find_employee (tab INTEGER)
 RETURN EMPLYEES.SURNAME%TYPE
 IS
 result EMPLYEES.SURNAME%TYPE;
 BEGIN
-SELECT surname INTO result from emplyees e
-WHERE e.TAB_NUMBER = tab;
-return result;
-EXCEPTION
-WHEN NO_DATA_FOUND THEN
-RETURN NULL;
+    SELECT surname INTO result from emplyees e
+    WHERE e.TAB_NUMBER = tab;
+    return result;
+    EXCEPTION
+        WHEN NO_DATA_FOUND THEN
+        RETURN NULL;
 END;
 FUNCTION exec_procedure RETURN VARCHAR2
 IS
 result VARCHAR2 (250 CHAR);
 BEGIN
-inc_salary;
-result := 'exec first_proc';
-sum_salary;
-result := result || ' exec seceond_proc';
-return result;
+    inc_salary;
+    result := 'exec first_proc';
+    sum_salary;
+    result := result || ' exec seceond_proc';
+    return result;
 END;
 END;
