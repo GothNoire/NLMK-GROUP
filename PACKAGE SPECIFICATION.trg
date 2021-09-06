@@ -1,0 +1,8 @@
+CREATE OR REPLACE PACKAGE employ_dep_post 
+IS
+PROCEDURE inc_salary;
+PROCEDURE sum_salary;
+FUNCTION find_employee (tab INTEGER)
+RETURN EMPLYEES.SURNAME%TYPE;
+FUNCTION exec_procedure RETURN VARCHAR2;
+END;
