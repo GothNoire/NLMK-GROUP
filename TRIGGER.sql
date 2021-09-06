@@ -12,5 +12,5 @@ IF INSERTING OR UPDATING THEN
 END IF;
 EXCEPTION
 WHEN excep THEN
-    RAISE_APPLICATION_ERROR(-20000, 'Зарплата не кратна 100!!');
+    RAISE_APPLICATION_ERROR(-20000, 'Р—Р°СЂРїР»Р°С‚Р° РЅРµ РєСЂР°С‚РЅР° 100!!');
 END;
